@@ -65,7 +65,7 @@ class TrackVis():
             os.system(f'mkdir -p {self.o3d_path}')
         
         self.vid_path = os.path.join(self.output_dir, 'tracking.mp4')
-        self.imshow_ratio = 0.7
+        self.imshow_ratio = 1.0
     
     def visualize_match_pts(self, match_pts_list, full_pcd, colors, track_info):
         # :param match_pts_list: list of (ptcl_num, 3) np.ndarray
@@ -97,10 +97,15 @@ class TrackVis():
                 self.vis.update_geometry(self.sphere_list[sphere_i])
             
             view_control = self.vis.get_view_control()
-            view_control.set_front([ -0.3091336095239805, 0.10370358297217445, -0.94534754367978802 ])
-            view_control.set_lookat([ 0.10592095570082928, 0.039109756311030912, 0.1852527727811189 ])
-            view_control.set_up([ -0.022245326124056605, 0.9929763673752956, 0.11620275082714933 ])
-            view_control.set_zoom(1.6800000000000008)
+            # view_control.set_front([ -0.3091336095239805, 0.10370358297217445, -0.94534754367978802 ])
+            # view_control.set_lookat([ 0.10592095570082928, 0.039109756311030912, 0.1852527727811189 ])
+            # view_control.set_up([ -0.022245326124056605, 0.9929763673752956, 0.11620275082714933 ])
+            # view_control.set_zoom(1.6800000000000008)
+
+            view_control.set_front([ -0.77523562529794765, -0.053540277310445278, 0.62939904986774553 ])
+            view_control.set_lookat([ 0.34191169979990277, -0.035425160489774073, 0.30077108102541666 ])
+            view_control.set_up([ 0.63103265950076659, -0.02081757859015668, 0.77547689266994435 ])
+            view_control.set_zoom(2.0)
             
             self.vis.poll_events()
             self.vis.update_renderer()
